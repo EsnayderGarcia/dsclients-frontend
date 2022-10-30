@@ -1,0 +1,36 @@
+<h1>Clientes</h1>
+
+<table border="1" class = "table table-hover">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Nome</td>
+      <td>Salário</td>
+      <td>CPF</td>
+      <td>Quantidade de Filhos</td>
+      <td>Data de Nascimento</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of clients">
+      <th scope="row">{{c.id}}</th>
+      <td>{{c.name}}</td>
+      <td>{{c.income | currency: "BRL"}}</td>
+      <td>{{c.cpf}}</td>
+      <td>{{c.children}}</td>
+      <td>{{c.birthDate | date: "dd/MM/yyyy"}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="pagination">
+  <!--
+    <pagination-controls (pageChange)="readAll(page = $event)" previousLabel="Voltar" 
+  nextLabel="Avançar"></pagination-controls>
+  -->
+  <pagination [totalItems]="total" [itemsPerPage]="itemsPerPage"  [(ngModel)]="page" (pageChanged)="readAll($event.page)"
+  nextText="Avançar"
+  previousText="Voltar">
+  </pagination>
+</div>
